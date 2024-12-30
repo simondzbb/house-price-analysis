@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台北市房价热力图</title>
+  <style>
+    html, body, #container {
+      width: 100%;
+      height: 100%;
+    }
+    #controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #controls select {
+      padding: 5px;
+      margin-right: 10px;
+    }
+    #controls button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    #infoBox {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <label for="price">房价:</label>
+    <select id="price">
+      <option value="不限">不限</option>
+      <option value="0-10">0-10</option>
+      <option value="10-20">10-20</option>
+      <option value="20-40">20-40</option>
+      <option value="40-50">40-50</option>
+      <option value="50-60">50-60</option>
+      <option value="60-100">大于60</option>
+    </select>
+
+    <label for="age">房龄:</label>
+    <select id="age">
+      <option value="不限">不限</option>
+      <option value="0-10">0-10</option>
+      <option value="10-20">10-20</option>
+      <option value="20-30">20-30</option>
+      <option value="30-40">30-40</option>
+      <option value="40-50">40-50</option>
+    </select>
+
+    <label for="subway">地铁:</label>
+    <select id="subway">
+      <option value="不限">不限</option>
+      <option value="500">500以内</option>
+      <option value="1000">1000以内</option>
+      <option value="1500">1500以内</option>
+      <option value="3000">3000以内</option>
+      <option value="5000">5000以内</option>
+      <option value="10000">一公里以内</option>
+    </select>
+
+    <label for="supermarket">商超:</label>
+    <select id="supermarket">
+      <option value="不限">不限</option>
+      <option value="0-3">0-3</option>
+      <option value="4-6">4-6</option>
+      <option value="7-10">7-10</option>
+    </select>
+
+    <button id="searchButton">搜索</button>
+  </div>
+
+  <div id="container"></div>
+
+  <div id="infoBox">
+    <p>经度: <span id="longitude"></span></p>
+    <p>纬度: <span id="latitude"></span></p>
+    <p>房价: <span id="priceInfo"></span> 万新台币/m²</p>
+    <p>房龄: <span id="ageInfo"></span> 年</p>
+    <p>最近地铁距离: <span id="subwayDistance"> 米</span></p>
+    <p>周围商超数量: <span id="supermarketCount"> 个</span></p>
+  </div>
+
+  <script src="https://webapi.amap.com/maps?v=2.0&key=187becc02ff7f03d04d22d20e9389288"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
